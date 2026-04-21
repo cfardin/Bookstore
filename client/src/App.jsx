@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import booksData from '../BooksData/Books.json';
 import './App.css';
 
 axios.defaults.withCredentials = true;
@@ -67,17 +68,18 @@ const Register = () => {
 
 const Books = () => {
   const [query, setQuery] = useState('');
-  const [books, setBooks] = useState([]);
+  // Map JSON data to match the expected structure for buyBook function
+  const [books] = useState(booksData.map(b => ({
+    ...b,
+    id: b.bookId,
+    title: b.bookName,
+    thumbnail: b.image
+  })));
 
-  const searchBooks = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.get(`${API_BASE}/books?q=${query}`);
-      setBooks(res.data);
-    } catch (err) {
-      alert('Search failed');
-    }
-  };
+  const filteredBooks = books.filter(book => 
+    book.title.toLowerCase().includes(query.toLowerCase()) ||
+    book.author.toLowerCase().includes(query.toLowerCase())
+  );
 
   const buyBook = async (book) => {
     try {
@@ -89,21 +91,48 @@ const Books = () => {
   };
 
   return (
-    <div className="container">
-      <h2>Search Books</h2>
-      <form onSubmit={searchBooks} style={{ flexDirection: 'row' }}>
-        <input type="text" placeholder="Search..." value={query} onChange={e => setQuery(e.target.value)} />
-        <button type="submit">Search</button>
-      </form>
-      <div style={{ marginTop: '20px' }}>
-        {books.map(book => (
-          <div key={book.id} className="book-card">
-            {book.thumbnail && <img src={book.thumbnail} alt={book.title} />}
-            <div>
-              <h3>{book.title}</h3>
-              <p>{book.authors?.join(', ')}</p>
-              <button onClick={() => buyBook(book)}>Buy Book</button>
+    <div className="home-container">
+      {/* Hero Section */}
+      <div className="hero-section">
+        <div className="hero-content">
+          <h1>Books to freshen up your bookshelf</h1>
+          <button className="view-list-btn">View The List</button>
+        </div>
+      </div>
+
+      <h2 className="books-title">Books</h2>
+
+      {/* Search Bar */}
+      <div className="search-container">
+        <input 
+          type="text" 
+          className="search-input"
+          placeholder="Search by title or author..." 
+          value={query} 
+          onChange={e => setQuery(e.target.value)}
+        />
+      </div>
+
+      {/* Books Grid */}
+      <div className="books-grid">
+        {filteredBooks.map(book => (
+          <div key={book.id} className="modern-book-card">
+            <div className="book-image-container">
+              <img src={book.thumbnail} alt={book.title} />
             </div>
+            <div className="book-tags">
+              <span className="tag">Young Adult</span>
+              <span className="tag">Identity</span>
+            </div>
+            <div className="book-info">
+              <h3>{book.title}</h3>
+              <p className="author">By : {book.author}</p>
+            </div>
+            <div className="book-meta">
+              <span>Fiction</span>
+              <span>$5.00</span>
+            </div>
+            <button className="buy-btn-small" onClick={() => buyBook(book)}>Buy Book</button>
           </div>
         ))}
       </div>
