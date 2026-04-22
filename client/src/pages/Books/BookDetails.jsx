@@ -73,6 +73,7 @@ export default function BookDetails() {
           </p>
 
           <p className="text-slate-400">{book.review}</p>
+          <p className="text-3xl font-bold text-indigo-400">৳ {book.price}</p>
 
           <div className="grid grid-cols-2 gap-2 text-sm text-slate-300">
             <p>⭐ Rating: {book.rating}</p>

@@ -15,11 +15,13 @@ export default function BookCard({ book }) {
         <p className="text-xs text-slate-500">{book.category}</p>
 
         <p className="text-sm">⭐ {book.rating}</p>
-        <p className="text-sm">$ {book.price}</p>
+        <p className="text-sm">
+          <span className="font-bold text-lg"> ৳ </span> {book.price}
+        </p>
 
         <p className="text-xs text-slate-400">{book.totalPages} pages</p>
 
-         <Link to={`/book/${book.id}`}>
+        <Link to={`/book/${book.id}`}>
           <button className="w-full mt-3 bg-indigo-600 hover:bg-indigo-700 py-2 rounded-lg">
             View Details
           </button>

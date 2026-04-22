@@ -9,11 +9,18 @@ import Cart from "./pages/cart/Cart";
 import AddBook from "./pages/admin/AddBooks";
 import Footer from "./components/Footer";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import HeroBanner from "./components/HeroBanner";
+import FeaturedBooks from "./components/FeaturedBooks";
+import Categories from "./components/Categories";
+import CTA from "./components/CTA";
+import Testimonials from "./components/Testimonials";
+import BookCarousel from "./components/BookCarousel";
 
 export default function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <Navbar />
+     
 
       <Routes>
         <Route path="/" element={<Home />} />
