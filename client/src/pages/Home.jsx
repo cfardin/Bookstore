@@ -7,7 +7,7 @@ import BookCarousel from "../components/BookCarousel";
 import Categories from "../components/Categories";
 import Testimonials from "../components/Testimonials";
 import CTA from "../components/CTA";
-import SearchBar from "../components/SearchBar";
+
 
 export default function Home() {
   const [books, setBooks] = useState([]);
