@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import AdminDashboard from "../pages/admin/AdminDashboard";
 
 export default function Navbar() {
   const { user, logout } = useContext(AuthContext);
@@ -36,13 +37,13 @@ export default function Navbar() {
             <span className="text-indigo-400">{user.name}</span>
 
             {user.role === "admin" && (
-              <Link to="/admin" className="hover:text-indigo-400">
-                Admin
+              <Link to="/addProduct" className="hover:text-indigo-400">
+                Add Product
               </Link>
             )}
             {user.role === "admin" && (
-              <Link to="/addProduct" className="hover:text-indigo-400">
-                Add Product
+              <Link to="/admin" className="hover:text-indigo-400">
+                Admin Dashboard
               </Link>
             )}
 

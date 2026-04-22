@@ -20,6 +20,8 @@ export default function MyOrders() {
     fetchOrders();
   }, []);
 
+  console.log("order is here", orders);
+
   if (loading) {
     return <div className="text-white p-10">Loading orders...</div>;
   }
@@ -37,9 +39,7 @@ export default function MyOrders() {
               key={order.id}
               className="bg-slate-900 p-4 rounded-lg border border-slate-800"
             >
-              <h2 className="text-xl font-semibold">
-                Book ID: {order.book_id}
-              </h2>
+              <h2 className="text-xl font-semibold">Book ID: {order.id}</h2>
 
               <p className="text-slate-400">Quantity: {order.quantity}</p>
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import api from "../services/api"; 
+import api from "../../services/api";
 
 export default function AddBook() {
   const [form, setForm] = useState({
@@ -13,6 +13,7 @@ export default function AddBook() {
     tags: "",
     publisher: "",
     yearOfPublishing: "",
+    price: ""
   });
 
   const handleChange = (e) => {
@@ -37,6 +38,7 @@ export default function AddBook() {
         tags: "",
         publisher: "",
         yearOfPublishing: "",
+        price:""
       });
     } catch (err) {
       console.log(err);

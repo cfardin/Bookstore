@@ -6,8 +6,9 @@ import Register from "./pages/auth/Register";
 import BookDetails from "./pages/Books/BookDetails";
 import MyOrders from "./pages/Orders/MyOrders";
 import Cart from "./pages/cart/Cart";
-import AddBook from "./pages/AddBooks";
+import AddBook from "./pages/admin/AddBooks";
 import Footer from "./components/Footer";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/orders" element={<MyOrders />} />
         <Route path="/myCart" element={<Cart />} />
         <Route path="/addProduct" element={<AddBook />} />
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
 
       <Footer />

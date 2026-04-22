@@ -16,9 +16,7 @@ const PORT = 5000;
 
 app.use(express.json());
 
-/* =========================
-   CORS CONFIG (IMPORTANT)
-========================= */
+
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -26,9 +24,6 @@ app.use(
   }),
 );
 
-/* =========================
-   SESSION CONFIG (CRITICAL FIX)
-========================= */
 app.use(
   session({
     secret: "bookstore-secret-key",
@@ -37,29 +32,24 @@ app.use(
     cookie: {
       httpOnly: true,
       secure: false,
-      sameSite: "lax", // IMPORTANT for localhost
+      sameSite: "lax", 
     },
   }),
 );
 
-/* =========================
-   ROUTES
-========================= */
 app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/cart", cartRoutes);
+// app.use("/api/admin", adminRoutes);
 
-/* =========================
-   INIT DB + START SERVER
-========================= */
 initDB()
   .then(() => {
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
+      console.log(` Server running on http://localhost:${PORT}`);
     });
   })
   .catch((err) => {
-    console.error("❌ Failed to initialize database:", err);
+    console.error(" Failed to initialize database:", err);
   });
