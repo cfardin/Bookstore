@@ -25,7 +25,7 @@ The objective of this project is to design and develop a full-stack web-based bo
 FUNCTIONALITIES:
 
 ER DIAGRAM:
-
+![image alt](https://github.com/cfardin/Bookstore/blob/837609d71fcfc4b53956a2e18b7929e1c4269997/ER.jpeg)
 
 
 ## Prerequisites
