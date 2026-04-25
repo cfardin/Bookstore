@@ -86,5 +86,8 @@ The objective of this project is to design and develop a full-stack web-based bo
 - FRONTEND: REACT
 - BACKEND:  Axios API, Express JS
 - DATABASE: MySQL (Via Xampp)
+
+## WATCH THE VIDEO DEMONSTRATION OF THE PROJECT BELOW:
+https://youtu.be/FlvUBG0JKmk?si=TWFhBD9GaTrJEa6A
   
 
